@@ -1,0 +1,28 @@
+<h1>Listing links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Slug</th>
+      <th>Hits</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.url %></td>
+        <td><%= link.display_slug %></td>
+        <td><%= link.hits %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Link', new_link_path %>
