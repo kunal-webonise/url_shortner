@@ -25,7 +25,8 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
-    @links = Link.all
+    @links = Link.order("hits desc").limit(100).paginate(:page => params[:page], :per_page => 3)
+
   end
 
   # GET /links/1/edit
@@ -39,11 +40,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @link }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
