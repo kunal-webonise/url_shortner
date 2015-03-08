@@ -1,6 +1,6 @@
 <%= form_for @link,remote: true, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :url, :class => 'control-label' %>
+    <%= f.label "Enter a Valid URL", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :url, :class => 'text_field' %>
     </div>
@@ -8,5 +8,6 @@
 
   <div class="form-actions">
     <%= f.submit "Generate Short URL", :class => 'btn btn-primary', :id => 'generate_url' %>
+    <%= link_to "View Top Accessed URLs", links_path, :class => 'btn' %>
   </div>
 <% end %>

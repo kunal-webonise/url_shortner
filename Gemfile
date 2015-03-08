@@ -26,7 +26,7 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-gem 'debugger'
+# gem 'debugger'
 gem "rails_config"
 gem "therubyracer"
 gem "less-rails"
