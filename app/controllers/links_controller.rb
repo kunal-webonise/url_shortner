@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.order("hits desc").limit(100).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /links/1
@@ -25,8 +25,6 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
-    @links = Link.order("hits desc").limit(100).paginate(:page => params[:page], :per_page => 3)
-
   end
 
   # GET /links/1/edit

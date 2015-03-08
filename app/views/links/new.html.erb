@@ -1,33 +1,27 @@
+
 <%- model_class = Link -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 <%= render :partial => 'form' %>
 
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">URL shortened successfully</h4>
+      </div>
+      <div class="modal-body">
+        The short-url is
+       <span id='shortURL'>
+         <a target='_blank'></a>
+       </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th><%= model_class.human_attribute_name(:url) %></th>
-    <th><%= model_class.human_attribute_name(:short_url) %></th>
-    <th><%= model_class.human_attribute_name(:hits) %></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @links.each do |link| %>
-      <tr>
-        <td><%= link.url %></td>
-        <td><%= link.display_slug %></td>
-        <td><%= link.hits %></td>
-      </tr>
-  <% end %>
-  </tbody>
-  <%= will_paginate @links %>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_link_path,
-            :class => 'btn btn-primary' %>
 

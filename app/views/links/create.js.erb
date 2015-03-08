@@ -1,0 +1,4 @@
+$('#exampleModal').modal()
+var short_url = '<%= @link.display_slug %>'
+$('#shortURL a').attr("href", short_url)
+$('#shortURL a').text(short_url);

@@ -4,35 +4,22 @@
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:slug) %></th>
-      <th><%= model_class.human_attribute_name(:hits) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:url) %></th>
+    <th><%= model_class.human_attribute_name(:short_url) %></th>
+    <th><%= model_class.human_attribute_name(:hits) %></th>
+  </tr>
   </thead>
   <tbody>
-    <% @links.each do |link| %>
+  <% @links.each do |link| %>
       <tr>
-        <td><%= link_to link.id, link_path(link) %></td>
-        <td><%= link.url %></td>
-        <td><%= link.slug %></td>
+        <td><%=  link_to(link.url, link.url, target: "_blank")%></td>
+        <td><%= link_to(link.display_slug, link.display_slug, target: "_blank") %></td>
         <td><%= link.hits %></td>
-        <td><%=l link.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_link_path(link), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      link_path(link),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
+  <%= will_paginate @links %>
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
