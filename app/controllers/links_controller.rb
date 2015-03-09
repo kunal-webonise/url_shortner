@@ -3,22 +3,16 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.order("hits desc").limit(100).paginate(:page => params[:page], :per_page => 10)
+    @links = Link.top_links.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
-    def show
-      if params[:slug]
-        @link = Link.find_by(slug: params[:slug])
-        if redirect_to @link.url
-          @link.hits += 1
-          @link.save
-        end
-      else
-        @link = Link.find(params[:id])
-      end
+    @link = Link.find_by(slug: params[:slug])
+    if redirect_to @link.url
+      @link.hits += 1
+      @link.save
     end
   end
 
