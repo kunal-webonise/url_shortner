@@ -1,6 +1,6 @@
 == README
 
-This app will create the short urls
+===This app will create the short urls
 
 To setup the application please refer the essectials.sh
 
