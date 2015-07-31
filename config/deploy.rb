@@ -12,7 +12,9 @@ set :deploy_to, "/home/ubuntu/www/url_shortner"
 
 task :do_bundle_install do
 
-  run  'cd /home/ubuntu/www/demo_app/current && bundle install && rake db:create && rake db:migrate'
+  run  'cd /home/ubuntu/www/demo_app/current && bundle install'
+  run 'rake db:create'
+  run 'rake db:migrate'
   run 'echo restarting apache'
   run 'sudo /etc/init.d/apache2 restart'
 end
